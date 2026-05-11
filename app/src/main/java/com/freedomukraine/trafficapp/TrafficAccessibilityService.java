@@ -1,6 +1,7 @@
-package com.example.trafficapp;
+package com.freedomukraine.trafficapp;
 
 import android.accessibilityservice.AccessibilityService;
+import android.util.Log;
 import android.view.accessibility.*;
 
 import org.json.JSONObject;
@@ -60,7 +61,7 @@ public class TrafficAccessibilityService extends AccessibilityService {
 
     private String callBackend(String text) throws Exception {
 
-        URL url = new URL("http://10.0.2.2:8080/api/analysis");
+        URL url = new URL("http://192.168.1.7:8080/api/analysis");
 
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("POST");
@@ -108,7 +109,7 @@ public class TrafficAccessibilityService extends AccessibilityService {
                 return true;
             }
         }
-
+        Log.d("TrafficApp", "Accessibility event received");
         return false;
     }
 }
