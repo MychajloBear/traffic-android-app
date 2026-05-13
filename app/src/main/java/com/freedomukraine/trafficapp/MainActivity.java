@@ -1,12 +1,11 @@
 package com.freedomukraine.trafficapp;
 
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,19 +21,28 @@ public class MainActivity extends AppCompatActivity {
         question.setText("What should a driver do at a red light?");
         question.setTextSize(22);
 
-        Button a = new Button(this);
-        a.setText("Speed up");
+        Button speedUp = new Button(this);
+        speedUp.setText("Speed up");
 
-        Button b = new Button(this);
-        b.setText("Stop");
+        Button stop = new Button(this);
+        stop.setText("Stop");
 
-        Button c = new Button(this);
-        c.setText("Turn left");
+        Button turnLeft = new Button(this);
+        turnLeft.setText("Turn left");
+
+        TextView result = new TextView(this);
+        result.setTextSize(22);
+        result.setText("Waiting for answer...");
+
+        speedUp.setOnClickListener(v -> result.setText("Wrong: Speed up"));
+        stop.setOnClickListener(v -> result.setText("Correct: Stop"));
+        turnLeft.setOnClickListener(v -> result.setText("Wrong: Turn left"));
 
         layout.addView(question);
-        layout.addView(a);
-        layout.addView(b);
-        layout.addView(c);
+        layout.addView(speedUp);
+        layout.addView(stop);
+        layout.addView(turnLeft);
+        layout.addView(result);
 
         setContentView(layout);
     }
